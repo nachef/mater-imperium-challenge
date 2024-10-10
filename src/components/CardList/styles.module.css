@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.wrapper > div {
+  box-sizing: border-box;
+  height: 200px;
+  max-width: 350px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+@media (min-width: 1440px) {
+  .wrapper > div {
+    flex: 1 1 calc(33.333% - 24px);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .wrapper > div {
+    flex: 1 1 calc(50% - 24px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .wrapper > div {
+    flex: 1 1 100%;
+  }
+}
+
+.noFilter_message {
+  width: 100%;
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+  margin-top: 20px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}

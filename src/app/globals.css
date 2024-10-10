@@ -1,6 +1,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --dropdown_menu: #888888;
 }
 
 @media (prefers-color-scheme: dark) {
