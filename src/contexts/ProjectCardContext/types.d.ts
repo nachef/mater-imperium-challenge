@@ -1,4 +1,5 @@
 export interface IProjectCardProps {
+  id: string;
   url: string;
   title: string;
   description: string;
@@ -7,6 +8,9 @@ export interface IProjectCardProps {
 
 export interface ProjectCardContextType {
   projectCards: IProjectCardProps[];
+  handleFixCard: (id: string) => void;
+  handleDeleteCard: (id: string) => void;
+  fixedCards: string[];
 }
 
 export interface ProjectCardProviderProps {

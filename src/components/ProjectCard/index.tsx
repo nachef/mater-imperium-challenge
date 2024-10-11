@@ -1,14 +1,19 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import type { IProjectCardProps } from "./types";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaThumbtack } from "react-icons/fa";
 
 export function ProjectCard({
+  id,
   url,
   title,
   description,
   isActive,
+  isFixed,
   onToggle,
+  onFix,
+  onDelete,
+  disableFix,
 }: IProjectCardProps) {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -49,6 +54,7 @@ export function ProjectCard({
     <a href={url} className={styles.container} onClick={handleLinkClick}>
       <div className={styles.info_section}>
         <div className={styles.card_circle_section}>
+          {isFixed && <FaThumbtack className={styles.fixed_icon} />}{" "}
           <span className={styles.title}>{title}</span>
           <div className={styles.menu_container} ref={dropdownRef}>
             <button
@@ -59,8 +65,26 @@ export function ProjectCard({
             </button>
             {isActive && (
               <div className={styles.dropdown_menu}>
-                <a href="#">Editar</a>
-                <a className={styles.remove_button} href="#">
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onFix();
+                    onToggle();
+                  }}
+                  className={disableFix ? styles.disabled : ""}
+                >
+                  {isFixed ? "Desafixar" : "Fixar"}
+                </a>
+                <a
+                  className={styles.remove_button}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onDelete(id);
+                    onToggle();
+                  }}
+                >
                   Excluir
                 </a>
               </div>

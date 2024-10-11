@@ -1,4 +1,5 @@
 export interface ICardProps {
+  id: string;
   url: string;
   title: string;
   description: string;
@@ -8,4 +9,8 @@ export interface ICardProps {
 export interface IProjectCardProps extends ICardProps {
   isActive: boolean;
   onToggle: () => void;
+  onFix: () => void;
+  onDelete: (id: string) => void;
+  isFixed: boolean;
+  disableFix: boolean;
 }

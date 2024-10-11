@@ -7,9 +7,9 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { SearchBar } from "@/components/SearchBar";
 
 export function CardList() {
-  const { projectCards } = useCard();
+  const { projectCards, handleFixCard, handleDeleteCard, fixedCards } = useCard();
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [activeCard, setActiveCard] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -24,8 +24,8 @@ export function CardList() {
     card.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleToggleDropdown = (index: number) => {
-    setActiveCard(activeCard === index ? null : index);
+  const handleToggleDropdown = (id: string) => {
+    setActiveCard(activeCard === id ? null : id);
   };
 
   return (
@@ -35,15 +35,22 @@ export function CardList() {
         {isLoading ? (
           <div className={styles.loading}>Carregando...</div>
         ) : filteredCards.length > 0 ? (
-          filteredCards.map((card, index) => (
-            <div key={index}>
+          filteredCards.map((card) => (
+            <div key={card.id}>
               <ProjectCard
+                id={card.id}
                 url={card.url}
                 title={card.title}
                 description={card.description}
                 percentage={card.percentage}
-                isActive={activeCard === index}
-                onToggle={() => handleToggleDropdown(index)}
+                isActive={activeCard === card.id}
+                isFixed={fixedCards.includes(card.id)}
+                onToggle={() => handleToggleDropdown(card.id)}
+                onFix={() => handleFixCard(card.id)}
+                onDelete={() => handleDeleteCard(card.id)}
+                disableFix={
+                  fixedCards.length >= 3 && !fixedCards.includes(card.id)
+                }
               />
             </div>
           ))
