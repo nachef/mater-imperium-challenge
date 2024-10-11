@@ -43,3 +43,10 @@
   overflow-wrap: break-word;
   white-space: normal;
 }
+
+.loading {
+  flex-wrap: wrap;
+  display: flex;
+  align-content: flex-end;
+  justify-content: center;
+}

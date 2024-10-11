@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./styles.module.css";
 import type { IProjectCardProps } from "./types";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 export function ProjectCard({
   url,
@@ -59,12 +60,15 @@ export function ProjectCard({
             {isActive && (
               <div className={styles.dropdown_menu}>
                 <a href="#">Editar</a>
-                <a className={styles.remove_button} href="#">Excluir</a>
+                <a className={styles.remove_button} href="#">
+                  Excluir
+                </a>
               </div>
             )}
           </div>
         </div>
         <span className={styles.description}>{description}</span>
+        <FaExternalLinkAlt className={styles.icon} />
       </div>
     </a>
   );

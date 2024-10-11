@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import { useCard } from "@/contexts/ProjectCardContext";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -10,12 +10,19 @@ export function CardList() {
   const { projectCards } = useCard();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const filteredCards = projectCards.filter((card) =>
     card.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
 
   const handleToggleDropdown = (index: number) => {
     setActiveCard(activeCard === index ? null : index);
@@ -25,7 +32,9 @@ export function CardList() {
     <div>
       <SearchBar onSearch={setSearchQuery} />
       <div className={styles.wrapper}>
-        {filteredCards.length > 0 ? (
+        {isLoading ? (
+          <div className={styles.loading}>Carregando...</div>
+        ) : filteredCards.length > 0 ? (
           filteredCards.map((card, index) => (
             <div key={index}>
               <ProjectCard

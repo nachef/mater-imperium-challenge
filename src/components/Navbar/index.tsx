@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { UserInfo } from "../UserInfo";
+import { UserInfo } from "@/components/UserInfo";
 import { useUser } from "@/contexts/UserContext";
 
 export function Navbar() {

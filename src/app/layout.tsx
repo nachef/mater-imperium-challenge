@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Provider } from "../contexts";
+import { Provider } from "@/contexts";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,7 +16,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Mater Imperium Challenge",
-  description: "Portal",
+  description: "Projects Portal",
 };
 
 export default function RootLayout({

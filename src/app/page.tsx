@@ -16,7 +16,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Mater Imperium Challenge, 2024
+            Mater Imperium Challenge
           </a>
         </footer>
       </div>
