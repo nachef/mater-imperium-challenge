@@ -51,7 +51,7 @@ export function ProjectCard({
   }, [isActive]);
 
   return (
-    <a href={url} className={styles.container} onClick={handleLinkClick}>
+    <a href={url} target="blank" className={styles.container} onClick={handleLinkClick}>
       <div className={styles.info_section}>
         <div className={styles.card_circle_section}>
           {isFixed && <FaThumbtack className={styles.fixed_icon} />}{" "}
