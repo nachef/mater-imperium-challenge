@@ -1,7 +1,8 @@
 import { Navbar } from "@/components/Navbar";
 import { CardList } from "@/components/CardList";
 import styles from "./page.module.css";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <main className={styles.main}>
           <Navbar/>
           <CardList />
+          <ToastContainer />
         </main>
         <footer className={styles.footer}>
           <a
